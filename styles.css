@@ -1,181 +1,64 @@
+/*
+      SPACING SYSTEM (px)
+      2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+      FONT SIZE SYSTEM (px)
+      10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+      */
+/* 
+      MAIN COLOR: #087f5b
+      GREY COLOR: #343a40
+      */
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  /* font-size: 10px; */
-  /* 10px / 16px = 0.625 = 62.5% */
-  /* Percentage of user's browser font-size setting */
-  font-size: 62.5%;
-}
-
 body {
-  font-family: "Rubik", sans-serif;
-  line-height: 1;
-  font-weight: 400;
-  color: #555;
+  font-family: "Inter", sans-serif;
+  color: #343a40;
 }
-
-/* ******************************** */
-/* GENERAL REUSABLE COMPONENTS */
-/* ******************************** */
 
 .container {
-  /*1140px*/
-  max-width: 180rem;
-  padding: 2rem 3.2rem;
+  max-width: 80%;
   margin: 0 auto;
-}
+  padding: 20px 0;
+  height: 800px;
 
-/* ******************************** */
-/* NAVIGATION */
-/* ******************************** */
-
-.main-nav-list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 3.2rem;
-}
-
-.main-nav-link:link,
-.main-nav-link:visited {
-  display: inline-block;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  font-size: 1.8rem;
-  transition: all 0.3s;
-}
-
-.main-nav-link:hover,
-.main-nav-link:active {
-  color: #cf711f;
-}
-
-/* .main-nav-link.nav-cta means that it has to have both classes (makes sure always apply) */
-.main-nav-link.nav-cta:link,
-.main-nav-link.nav-cta:visited {
-  padding: 1.2rem 2.4rem;
-  border-radius: 9px;
-  color: #fff;
-  background-color: #e67e22;
-}
-
-.main-nav-link.nav-cta:hover,
-.main-nav-link.nav-cta:active {
-  background-color: #cf711f;
-}
-
-.btn,
-.btn:link,
-.btn:visited {
-  display: inline-block;
-
-  font-size: 2rem;
-  padding: 1.6rem 3.2rem;
-  border-radius: 9px;
-  text-decoration: none;
-  font-weight: 600;
-
-  /* only necessary for .btn */
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-
-  transition: all 0.3s;
-}
-
-.btn--form {
-  background-color: #45260a;
-  color: #fdf2e9;
-  align-self: end;
-  padding: 1.2rem;
-}
-
-.btn--form:hover {
-  background-color: #fff;
-  color: #555;
-}
-
-/* ******************************** */
-/* Header */
-/* ******************************** */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #333;
-  font-weight: 500;
-  font-size: 1.8rem;
-}
-
-/* ******************************** */
-/* Main section */
-/* ******************************** */
-
-.main-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-.sub-section {
-  background-color: #cf711f;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-  border-radius: 11px;
-  overflow: hidden;
-
-  height: 50rem;
-}
-
-.section-heading {
-  padding: 3.2rem 3.2rem;
-  color: #2e1907;
-
-  font-weight: 500;
-  font-size: 1.8rem;
-}
-
-/* avoid */
-.section-form {
+.qlc {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 3.2rem;
-  row-gap: 2.4rem;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.section-form label {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-bottom: 1.2rem;
-  color: #2e1907;
-}
-.section-form input {
-  width: 100%;
-  padding: 1.2rem;
-  font-size: 1.8rem;
-  font-family: inherit;
-  color: inherit;
-  border: none;
-  background-color: #fdf2e9;
-  border-radius: 9px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+.color-name,
+.category {
+  padding: 20px 0;
 }
 
-.section-form input::placeholder {
-  color: #aaa;
+.sub-heading {
+  border: 1px solid #343a40;
 }
 
-.sub-section *:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
+.green {
+  background-color: #67a025;
 }
-
-.section-form {
-  padding: 0 4.8rem;
+.pink {
+  background-color: #c85b69;
+}
+.black {
+  background-color: #141414;
+}
+.grey {
+  background-color: #858585;
+}
+.yellow {
+  background-color: #d7b347;
+}
+.heading {
+  color: #343a40;
 }

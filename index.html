@@ -2,150 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-
-    <title>Bigtool</title>
+    <title>Itsu production planner</title>
   </head>
   <body>
-    <header class="header container">
-      <div class="heading">
-        <p>A simple try to make your life easier.</p>
-      </div>
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li><a class="main-nav-link" href="#">How it works</a></li>
-          <li><a class="main-nav-link" href="#">Meals</a></li>
-          <li><a class="main-nav-link" href="#">Testimonials</a></li>
-          <li><a class="main-nav-link" href="#">Pricing</a></li>
-          <li><a class="main-nav-link nav-cta" href="#">Try for free</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div class="main-section container">
-        <div class="sushi-section sub-section">
-          <p class="section-heading">Enter the number of boxes below.</p>
-
-          <form class="section-form" action="#">
-            <div>
-              <label for="salmon-avo">Salmon avo dragon roll</label>
-              <input id="salmon-avo" type="number" placeholder="0" required />
-            </div>
-            <div>
-              <label for="spicy-dragon">Spicy salmon dragon roll</label>
-              <input id="spicy-dragon" type="number" placeholder="0" required />
-            </div>
-            <div>
-              <label for="veggie-dragon">Veggie dragon roll</label>
-              <input
-                id="veggie-dragon"
-                type="number"
-                placeholder="0"
-                required
-              />
-            </div>
-            <div>
-              <label for="health-happiness">Health & happiness</label>
-              <input
-                id="health-happiness"
-                type="number"
-                placeholder="0"
-                required
-              />
-            </div>
-            <div>
-              <label for="classic">Itsu classic</label>
-              <input id="classic" type="number" placeholder="0" required />
-            </div>
-            <div>
-              <label for="fullhouse">Salmon fullhouse</label>
-              <input id="fullhouse" type="number" placeholder="0" required />
-            </div>
-            <div>
-              <label for="veggie-collection">Veggie sushi collection</label>
-              <input
-                id="veggie-collection"
-                type="number"
-                placeholder="32"
-                required
-              />
-            </div>
-          </form>
+    <div class="container">
+      <div class="category">Sushi boxes</div>
+      <div class="color-name green">
+        <div class="heading">Green</div>
+        <div class="qlc">
+          <div class="sub-heading">Qty</div>
+          <div class="sub-heading">Label</div>
+          <div class="sub-heading">Check</div>
         </div>
-        <div class="salad-section">
-          <div class="sushi-section sub-section">
-            <p class="section-heading">Enter the number of salads below.</p>
-            <form class="section-form" action="#">
-              <div>
-                <label for="salmon-avo">Salmon avo dragon roll</label>
-                <input id="salmon-avo" type="number" placeholder="0" required />
-              </div>
-              <div>
-                <label for="spicy-dragon">Spicy salmon dragon roll</label>
-                <input
-                  id="spicy-dragon"
-                  type="number"
-                  placeholder="0"
-                  required
-                />
-              </div>
-              <div>
-                <label for="veggie-dragon">Veggie dragon roll</label>
-                <input
-                  id="veggie-dragon"
-                  type="number"
-                  placeholder="0"
-                  required
-                />
-              </div>
-              <div>
-                <label for="health-happiness">Health & happiness</label>
-                <input
-                  id="health-happiness"
-                  type="number"
-                  placeholder="0"
-                  required
-                />
-              </div>
-              <div>
-                <label for="classic">Itsu classic</label>
-                <input id="classic" type="number" placeholder="0" required />
-              </div>
-              <div>
-                <label for="fullhouse">Salmon fullhouse</label>
-                <input id="fullhouse" type="number" placeholder="0" required />
-              </div>
-              <div>
-                <label for="veggie-collection">Veggie sushi collection</label>
-                <input
-                  id="veggie-collection"
-                  type="number"
-                  placeholder="32"
-                  required
-                />
-              </div>
-            </form>
-          </div>
+        <div class="qlc">
+          <div class="sub-heading"><input type="number" /></div>
+          <div class="sub-heading">---</div>
+          <div class="sub-heading">---</div>
         </div>
       </div>
-
-      <button class="btn btn--form">Sign up now</button>
-    </main>
+      <div class="color-name pink">Pink</div>
+      <div class="color-name black">Black</div>
+      <div class="color-name grey">Grey</div>
+      <div class="color-name yellow">Yellow</div>
+      <div class="category">Total</div>
+      <div class="category">Extra production made</div>
+    </div>
   </body>
 </html>

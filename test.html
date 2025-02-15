@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Sum Inputs Across Different Sections</title>
+  </head>
+  <body>
+    <!-- Set A Inputs (spread across different sections) -->
+    <section id="sectionA">
+      <h2>Section A</h2>
+      <label for="a1">Input A1:</label>
+      <input type="number" id="a1" class="input-field" data-set="setA" />
+    </section>
+
+    <section id="sectionB">
+      <h2>Section B</h2>
+      <label for="a2">Input A2:</label>
+      <input type="number" id="a2" class="input-field" data-set="setA" />
+    </section>
+
+    <!-- Total for Set A (in a different container) -->
+    <div id="totalA">
+      <h3>Total for Set A</h3>
+      <input type="number" readonly data-total-for="setA" />
+    </div>
+
+    <!-- Set B Inputs (spread across different sections) -->
+    <section id="sectionC">
+      <h2>Section C</h2>
+      <label for="b1">Input B1:</label>
+      <input type="number" id="b1" class="input-field" data-set="setB" />
+    </section>
+
+    <section id="sectionD">
+      <h2>Section D</h2>
+      <label for="b2">Input B2:</label>
+      <input type="number" id="b2" class="input-field" data-set="setB" />
+    </section>
+
+    <section id="sectionE">
+      <h2>Section E</h2>
+      <label for="b3">Input B3:</label>
+      <input type="number" id="b3" class="input-field" data-set="setB" />
+    </section>
+
+    <!-- Total for Set B (in a different container) -->
+    <div id="totalB">
+      <h3>Total for Set B</h3>
+      <input type="number" readonly data-total-for="setB" />
+    </div>
+
+    <!-- Link to External JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

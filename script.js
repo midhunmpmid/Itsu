@@ -1,16 +1,28 @@
-function calculateTotal() {
-  let total = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to calculate and update the total for a given set
+  function calculateTotalForSet(setName) {
+    // Select all input fields for the given set using the data attribute
+    const inputs = document.querySelectorAll(
+      `input.input-field[data-set="${setName}"]`
+    );
+    let total = 0;
+    inputs.forEach((input) => {
+      total += parseFloat(input.value) || 0; // Convert input value to number; default to 0 if empty or NaN
+    });
+    // Find the corresponding total field by its data attribute and update its value
+    const totalField = document.querySelector(
+      `input[data-total-for="${setName}"]`
+    );
+    if (totalField) {
+      totalField.value = total;
+    }
+  }
 
-  // Loop through all input fields and sum their values
-  document.querySelectorAll(".salmon-avo-input").forEach((input) => {
-    total += parseFloat(input.value) || 0; // Convert to number, default to 0 if empty
+  // Attach an event listener to all input fields that should be summed
+  document.querySelectorAll("input.input-field").forEach((input) => {
+    input.addEventListener("input", function () {
+      const setName = input.getAttribute("data-set");
+      calculateTotalForSet(setName);
+    });
   });
-
-  // Set the total field
-  document.getElementById("salmon-avo-total").value = total;
-}
-
-// Attach event listener to both number inputs
-document.querySelectorAll(".salmon-avo-input").forEach((input) => {
-  input.addEventListener("input", calculateTotal);
 });

@@ -22,8 +22,8 @@ body {
 
 .container {
   max-width: 80%;
-  margin: 0 auto;
-  padding: 20px 0;
+  margin: 10px auto;
+  padding: 10px 0 0;
   /* height: 800px; */
 
   display: grid;
@@ -64,15 +64,27 @@ body {
 }
 
 .category {
-  padding: 20px 0;
+  /* padding: 20px 0 0; */
   background-color: #e6e6e6;
 }
 
 .heading {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 20px;
+  padding: 20px 0;
   text-align: center;
+
+  border: 1px solid #696969;
+
+  color: #343a40;
+}
+
+.heading-2 {
+  font-weight: 600;
+  padding: 5px 5px;
+  text-align: center;
+
+  border: 1px solid #696969;
 
   color: #343a40;
 }
@@ -144,6 +156,7 @@ input:focus {
   background-color: #e2db71;
 }
 
+.extras,
 .input-extras {
   background-color: #e6e6e6;
 }

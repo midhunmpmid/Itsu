@@ -9,6 +9,10 @@
       GREY COLOR: #343a40
       */
 
+/***************************
+GENERAL STYLES
+******************************* */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +24,9 @@ body {
   color: #343a40;
 }
 
+/***************************
+GRID STYLES
+******************************* */
 .container {
   max-width: 80%;
   margin: 10px auto;
@@ -56,6 +63,10 @@ body {
   display: grid;
   grid-template-rows: repeat(16, 1fr);
 }
+
+/***************************
+HEADINGS & C ATEGORY STYLES
+******************************* */
 
 .product-name,
 .product-category {
@@ -119,6 +130,10 @@ body {
   border-left: none;
   border-right: none;
 }
+
+/***************************
+INPUT FIELD STYLES
+******************************* */
 
 input[type="number"] {
   width: 100%;

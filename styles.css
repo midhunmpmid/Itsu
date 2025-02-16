@@ -30,11 +30,21 @@ body {
   grid-template-columns: 1.5fr repeat(5, 1fr) 0.5fr 1fr;
 }
 
+.container-grid-2 {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(5, 1fr) 1fr 0.5fr;
+}
+
 .qlc {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
   text-align: center;
+}
+
+.tray-pieces {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
 }
 
 .products {
@@ -95,6 +105,19 @@ body {
 
 .no-padding {
   padding: 0;
+}
+
+.no-right-border {
+  border-right: none;
+}
+
+.no-left-border {
+  border-left: none;
+}
+
+.no-left-and-right-border {
+  border-left: none;
+  border-right: none;
 }
 
 input[type="number"] {

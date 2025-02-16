@@ -23,6 +23,78 @@ document.addEventListener("DOMContentLoaded", function () {
     input.addEventListener("input", function () {
       const setName = input.getAttribute("data-set");
       calculateTotalForSet(setName);
+      calculateSalmonNigiri();
     });
   });
 });
+
+const products = {
+  salmonAvoDragon: {
+    salmon_avo_maki: 7,
+  },
+
+  spicySalmon: {
+    salmon_avo_maki: 7,
+  },
+
+  veggieDragon: {
+    veggie_maki: 7,
+  },
+
+  fullhouse: {
+    salmon_nigiri: 5,
+    baby_salmon: 4,
+    salmon_avo_maki: 6,
+  },
+
+  health_happiness: {
+    salmon_nigiri: 3,
+    prawn_nigiri: 2,
+    veggie_maki: 2,
+    salmon_avo_maki: 2,
+    crab_maki: 2,
+  },
+
+  classic: {
+    salmon_nigiri: 3,
+    prawn_nigiri: 2,
+    baby_avo_maki: 4,
+    salmon_avo_maki: 3,
+    crab_maki: 3,
+  },
+
+  veggie_collection: {
+    baby_avo_maki: 6,
+    veggie_maki: 8,
+  },
+
+  avoBaby: {
+    baby_avo_maki: 18,
+  },
+
+  salmonSushi: {
+    salmon_nigiri: 6,
+  },
+
+  salmonLight: {
+    salmon_nigiri: 3,
+    salmon_avo_maki: 4,
+    baby_salmon: 3,
+  },
+
+  sushiFestival: {
+    salmon_nigiri: 5,
+    baby_salmon: 6,
+    baby_avo_maki: 6,
+  },
+
+  californiaRolls: {
+    crab_maki: 6,
+  },
+};
+
+function calculateSalmonNigiri() {
+  document.getElementById("input-salmon-nigiri-pieces-green").value =
+    document.getElementById("fullhouse-green").value *
+    products.fullhouse.salmon_nigiri;
+}

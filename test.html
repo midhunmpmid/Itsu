@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Sushi Production Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .production-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+      }
+      .input-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .input-item {
+        display: flex;
+        flex-direction: column;
+      }
+      input {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 4px;
+      }
+      .results {
+        margin-top: 20px;
+      }
+      .production-results {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+      }
+      .total-summary {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+      .ingredients-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+      }
+      .ingredient-category {
+        margin-bottom: 15px;
+      }
+      h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+      .ingredient-list {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Live Sushi Production Calculator</h1>
+
+      <div id="productions-container">
+        <!-- Productions 1-4 will be here -->
+      </div>
+
+      <div id="results" class="results"></div>
+    </div>
+
+    <script>
+      const recipes = {
+        fullhouse: {
+          salmon_nigiri: 5,
+          salmon_avo_maki: 6,
+          baby_salmon: 4,
+        },
+        happiness: {
+          veggie_maki: 2,
+          crab_maki: 2,
+          salmon_avo_maki: 2,
+          salmon_nigiri: 3,
+          prawn_nigiri: 2,
+        },
+        classic: {
+          salmon_avo_maki: 3,
+          crab_maki: 3,
+          baby_avo_maki: 4,
+          salmon_nigiri: 3,
+          prawn_nigiri: 2,
+        },
+        veggie_collection: {
+          veggie_maki: 8,
+          baby_avo_maki: 6,
+        },
+      };
+
+      // Initialize productions and set up event listeners
+      window.onload = function () {
+        for (let i = 1; i <= 4; i++) {
+          const productionHtml = `
+                    <div class="production-section">
+                        <h3>Production ${i}</h3>
+                        <div class="input-group">
+                            <div class="input-item">
+                                <label>Full House</label>
+                                <input type="number" id="fullhouse-${i}" min="0" value="0" oninput="calculate()">
+                            </div>
+                            <div class="input-item">
+                                <label>Happiness</label>
+                                <input type="number" id="happiness-${i}" min="0" value="0" oninput="calculate()">
+                            </div>
+                            <div class="input-item">
+                                <label>Classic</label>
+                                <input type="number" id="classic-${i}" min="0" value="0" oninput="calculate()">
+                            </div>
+                            <div class="input-item">
+                                <label>Veggie Collection</label>
+                                <input type="number" id="veggie_collection-${i}" min="0" value="0" oninput="calculate()">
+                            </div>
+                        </div>
+                    </div>
+                `;
+          document
+            .getElementById("productions-container")
+            .insertAdjacentHTML("beforeend", productionHtml);
+        }
+        // Initial calculation
+        calculate();
+      };
+
+      function calculateProduction(quantities) {
+        const totalIngredients = {
+          // Nigiris
+          salmon_nigiri: 0,
+          prawn_nigiri: 0,
+          // Makis
+          salmon_avo_maki: 0,
+          baby_salmon: 0,
+          baby_avo_maki: 0,
+          crab_maki: 0,
+          veggie_maki: 0,
+        };
+
+        for (const [product, quantity] of Object.entries(quantities)) {
+          for (const [ingredient, amount] of Object.entries(recipes[product])) {
+            totalIngredients[ingredient] += amount * quantity;
+          }
+        }
+
+        const totalMakis =
+          totalIngredients.salmon_avo_maki +
+          totalIngredients.baby_salmon +
+          totalIngredients.baby_avo_maki +
+          totalIngredients.crab_maki +
+          totalIngredients.veggie_maki;
+
+        const totalNigiris =
+          totalIngredients.salmon_nigiri + totalIngredients.prawn_nigiri;
+
+        return {
+          detailed: totalIngredients,
+          summary: {
+            total_makis: totalMakis,
+            total_nigiris: totalNigiris,
+            grand_total: totalMakis + totalNigiris,
+          },
+        };
+      }
+
+      function calculate() {
+        const results = document.getElementById("results");
+        results.innerHTML = "";
+
+        let dailyTotals = {
+          salmon_nigiri: 0,
+          prawn_nigiri: 0,
+          salmon_avo_maki: 0,
+          baby_salmon: 0,
+          baby_avo_maki: 0,
+          crab_maki: 0,
+          veggie_maki: 0,
+        };
+
+        // Calculate for each production
+        for (let i = 1; i <= 4; i++) {
+          const quantities = {
+            fullhouse:
+              parseInt(document.getElementById(`fullhouse-${i}`).value) || 0,
+            happiness:
+              parseInt(document.getElementById(`happiness-${i}`).value) || 0,
+            classic:
+              parseInt(document.getElementById(`classic-${i}`).value) || 0,
+            veggie_collection:
+              parseInt(
+                document.getElementById(`veggie_collection-${i}`).value
+              ) || 0,
+          };
+
+          const result = calculateProduction(quantities);
+
+          // Add to daily totals
+          for (const [ingredient, amount] of Object.entries(result.detailed)) {
+            dailyTotals[ingredient] += amount;
+          }
+
+          // Display individual production results
+          const productionResult = `
+                    <div class="production-results">
+                        <h3>Production ${i} Breakdown</h3>
+                        <div class="ingredients-section">
+                            <div class="ingredient-category">
+                                <h4>Nigiris:</h4>
+                                <div class="ingredient-list">
+                                    <p>Salmon Nigiri: ${result.detailed.salmon_nigiri} pieces</p>
+                                    <p>Prawn Nigiri: ${result.detailed.prawn_nigiri} pieces</p>
+                                </div>
+                            </div>
+                            <div class="ingredient-category">
+                                <h4>Makis:</h4>
+                                <div class="ingredient-list">
+                                    <p>Salmon-Avo Maki: ${result.detailed.salmon_avo_maki} pieces</p>
+                                    <p>Baby Salmon Maki: ${result.detailed.baby_salmon} pieces</p>
+                                    <p>Baby Avo Maki: ${result.detailed.baby_avo_maki} pieces</p>
+                                    <p>Crab Maki: ${result.detailed.crab_maki} pieces</p>
+                                    <p>Veggie Maki: ${result.detailed.veggie_maki} pieces</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Production ${i} Totals:</h4>
+                        <p>Total Makis: ${result.summary.total_makis} pieces</p>
+                        <p>Total Nigiris: ${result.summary.total_nigiris} pieces</p>
+                        <p>Grand Total: ${result.summary.grand_total} pieces</p>
+                    </div>
+                `;
+          results.insertAdjacentHTML("beforeend", productionResult);
+        }
+
+        // Display daily totals
+        const dailyTotalsHtml = `
+                <div class="total-summary">
+                    <h3>Total Daily Ingredients</h3>
+                    <div class="ingredients-section">
+                        <div class="ingredient-category">
+                            <h4>Nigiris:</h4>
+                            <div class="ingredient-list">
+                                <p>Salmon Nigiri: ${
+                                  dailyTotals.salmon_nigiri
+                                } pieces</p>
+                                <p>Prawn Nigiri: ${
+                                  dailyTotals.prawn_nigiri
+                                } pieces</p>
+                            </div>
+                        </div>
+                        <div class="ingredient-category">
+                            <h4>Makis:</h4>
+                            <div class="ingredient-list">
+                                <p>Salmon-Avo Maki: ${
+                                  dailyTotals.salmon_avo_maki
+                                } pieces</p>
+                                <p>Baby Salmon Maki: ${
+                                  dailyTotals.baby_salmon
+                                } pieces</p>
+                                <p>Baby Avo Maki: ${
+                                  dailyTotals.baby_avo_maki
+                                } pieces</p>
+                                <p>Crab Maki: ${
+                                  dailyTotals.crab_maki
+                                } pieces</p>
+                                <p>Veggie Maki: ${
+                                  dailyTotals.veggie_maki
+                                } pieces</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Daily Totals:</h4>
+                    <p>Total Makis: ${
+                      dailyTotals.salmon_avo_maki +
+                      dailyTotals.baby_salmon +
+                      dailyTotals.baby_avo_maki +
+                      dailyTotals.crab_maki +
+                      dailyTotals.veggie_maki
+                    } pieces</p>
+                    <p>Total Nigiris: ${
+                      dailyTotals.salmon_nigiri + dailyTotals.prawn_nigiri
+                    } pieces</p>
+                    <p>Grand Total: ${Object.values(dailyTotals).reduce(
+                      (a, b) => a + b,
+                      0
+                    )} pieces</p>
+                </div>
+            `;
+        results.insertAdjacentHTML("beforeend", dailyTotalsHtml);
+      }
+    </script>
+  </body>
+</html>
